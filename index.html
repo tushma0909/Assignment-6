@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Earth Main</title>
     <link href="./assets/about.png" rel="icon" type="image/x-icon">
-     <!-- daisyUi cdn -->
+  <!-- daisyUi cdn -->
      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
      <!-- tailwind css cdn -->
      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -72,30 +72,94 @@
 
         <!-- hero section -->
 
-        <!-- category -->
-        <section  class="mt-10 ">
-          <h1 class="text-center text-2xl font-semibold">Choose Your tree</h1>
-          <div class="mt-5 flex justify-between w-11/12 mx-auto items-start gap-8 p-8">
-          <div class="w-[200px] ">
-             <h2 class="font-semibold text-2xl">Categories</h2>
-             
-       
-          <div id="Categories-container">
-         </div>
-         <!-- plants -->
-        </div>
-        <div id="plants-card-container" class="grid lg:grid-cols-3   md:grid-cols-2 grid-cols-1 md:gap-4">
+       <!-- Trees and Campaign Container -->
+       <div class="bg-[#F0FDF4]">
+        <section class="w-11/12 mx-auto pt-24">
+            <h1 class="text-3xl font-semibold text-center">Choose Your Trees</h1>
+            <!-- Loading Spinner -->
+                <!-- <div id="spinner" class="hidden flex items-center justify-center my-10">
+                    <span class="loading loading-dots loading-xl"></span>
+                </div> -->
+            <!-- Choose Your Trees Section with ES6 -->
+            <section class="grid grid-cols-12 gap-5 mt-10">
+                <!-- Left side -->
+                <aside class="col-span-full md:col-span-3 lg:col-span-2 text-center md:text-left">
+                    <h1 class="text-xl font-semibold">Categories</h1>
+                    <!-- All Categories here -->
+                    <div id="categories-container" class="mt-3 space-y-2">
+                        <!-- Trees Button demo -->
+                        <!-- <button class="hover:bg-[#15803D] hover:text-white px-3 py-2 w-full md:text-left cursor-pointer rounded-xl text-center">All Trees</button> -->
+                    </div>
+                </aside>
+                <!-- Middle -->
+                <div class="col-span-full md:col-span-6 lg:col-span-8">
+                    <div id="hide-when-loading">
+                        <div id="all-plants-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+                    </div>
+                    <!-- Loading Spinner -->
+                    <div id="spinner" class="hidden flex items-start justify-center min-h-80">
+                        <span class="loading loading-dots loading-xl"></span>
+                    </div>
 
-        </div>
-        <!-- addToCart -->
-          <div class="bg-white h-[400px] w-[130px] p-3 rounded-lg">
-             <h2 class="text-l font-semibold">Your card</h2> 
-             <div id="add-to-cart" class="mb-3">
+                    <!-- Demo Cart -->
+                    <!-- <div class="p-4 bg-white rounded-lg space-y-3 flex items-center justify-between flex-col w-full">
+                        <img class="bg-cover rounded-lg w-full h-52 object-cover" src="${plant.image}" alt="">
+                        <h2 class="font-semibold">${plant.name}</h2>
+                        <p class="text-[#4C545F] text-sm text-justify">${plant.description}</p>
+                        <div class="flex items-center justify-between w-full text-sm md:text-base">
+                            <button class="text-[#15803D] bg-[#DCFCE7] rounded-3xl px-4 py-1 font-medium cursor-pointer">${plant.category}</button>
+                            <p class="font-semibold">৳<span>${plant.price}</span></p>
+                        </div>
+                        <button class="bg-[#15803D] text-white rounded-3xl w-full px-3 py-2 lg:px-5 lg:py-3 cursor-pointer font-medium">Add to Cart</button>
+                    </div> -->
+                </div>
+                <!-- Modal for Card -->
+                <dialog id="modal_container" class="modal modal-bottom sm:modal-middle">
+                    <div class="modal-box">
+                        <div id="modal-details">
+                            <!-- Modal Details -->
+                            <!-- <div class="space-y-3">
+                                <h2 class="font-semibold">${plant.name}</h2>
+                                <img class="bg-cover rounded-lg w-full h-52 object-cover" src="${plant.image}" alt="">
+                                <p><span class="font-semibold">Category:</span> ${plant.category}</p>
+                                <p><span class="font-semibold">Price:</span> ৳${plant.price}</p>
+                                <p><span class="font-semibold">Description: </span><span class="text-[#4C545F] text-sm text-justify">${plant.description}</span>
+                            </div> -->
+                        </div>
+                        <div class="modal-action">
+                            <form method="dialog">
+                                <!-- if there is a button in form, it will close the modal -->
+                                <button class="btn">Close</button>
+                            </form>
+                        </div>
+                    </div>
+                </dialog>
+                <!-- Right side -->
+                <aside class="col-span-full md:col-span-3 lg:col-span-2 bg-white rounded-2xl p-4">
+                    <h1 class="text-xl font-semibold">Your Cart</h1>
+                    <!-- Cart added -->
+                    <div id="cart-added-container" class="mt-4 space-y-3">
+                        <!-- cart added demo -->
+                        <!-- <div class="flex items-center justify-between bg-[#F0FDF4] px-3 py-2 rounded-lg">
+                            <div class="space-y-2">
+                                <h3 class="font-semibold">Mango Tree</h3>
+                                <p class="text-[#879395]">৳500 x 1</p>
+                            </div>
+                            <i class="fa-solid fa-xmark"></i>
+                        </div> -->
+                    </div>
+                    <hr class="my-3 bg-[#1F2937] opacity-[0.1]">
+                    <!-- Total Amount -->
+                    <div class="">
+                        <div class="flex items-center justify-between font-medium">
+                            <p>Total:</p>
+                            <p>৳<span id="total-amount">0</span></p>
+                        </div>
+                    </div>
+                </aside>
+            </section>
 
-             </div>
-          </div>
-          </div>
-        </section>
+
 
 
         <!-- campaign section -->
@@ -122,7 +186,7 @@
         <!-- impact section -->
          <section class="bg-green-200 h-[200px] ">
           <h1 class="text-center p-8  font-semibold text-lg">Our Impact</h1>
-          <div class="flex items-center gap-0">
+          <div class="flex items-center gap-5 md:gap-0">
             <div class="bg-white w-[250px] h-[70px] rounded-lg mx-auto text-center flex flex-col  justify-center items-center hover:shadow-3xl hover:-translate-y-2 hover:-translate-x-2 transition-duration-600 ">
               <h1 class=" text-green-700 font-bold">500K+</h1>
               <p class="text-[10px] font-light">Trees Planted</p>
@@ -138,11 +202,11 @@
 
        <!-- form section -->
  
-       <div class="hero bg-green-800 h-[350px]">
+       <div class="hero bg-green-800 w-full ">
       <div> <h1 class="text-2xl font-bold text-center text-white mb-60">Plant a Tree Today</h1></div>
    
      
-        <div class="card mt-20 bg-green-700 w-[400px] items-center max-w-lg shrink-0 shadow-2xl">
+        <div class="card mt-20 mb-10 bg-green-700 w-[400px] items-center max-w-lg shrink-0 shadow-2xl">
          
           <div class="card-body">
             <fieldset class="fieldset">
@@ -166,16 +230,24 @@
             </fieldset>
           </div>
         </div>
+      </div>
 
 
 
-        </div>
+
+
+
+
+
+
+
+
 
         <!-- footer section -->
 <section>
   
   <footer>
-    <div class="bg-green-900 h-[50px] flex justify-center items-center">
+    <div class="bg-green-900 flex justify-center items-center h-10">
       <p class="text-white text-[10px]">© 2025 Green Earth. All Rights Reserved.</p>
     </div>
    </footer>
